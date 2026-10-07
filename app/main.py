@@ -1,12 +1,12 @@
-from typing import Callable
 from functools import wraps
+from typing import Callable
 
 
-def cache(func):
+def cache(func: Callable) -> Callable:
     saved_results = {}
 
     @wraps(func)
-    def wrapper(*args, **kwargs):
+    def wrapper(*args, **kwargs) -> None:
         key = (args, tuple(sorted(kwargs.items())))
 
         if key in saved_results:
